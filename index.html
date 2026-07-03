@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mingze Plan · 2026 年度计划</title>
+  <meta name="description" content="铭泽的 2026 年度计划：改名、手机、Java、网站、内容、驾照、身体与财务。" />
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --bg-soft: #131722;
+      --card: rgba(255, 255, 255, .092);
+      --card-strong: rgba(255, 255, 255, .14);
+      --line: rgba(255, 222, 188, .22);
+      --line-strong: rgba(255, 222, 188, .42);
+      --text: rgba(255, 248, 238, .96);
+      --soft: rgba(255, 238, 218, .67);
+      --faint: rgba(255, 238, 218, .42);
+      --accent: #ffd6a8;
+      --accent-2: #ff996f;
+      --mint: #9dffc5;
+      --blue: #93caff;
+      --pink: #ffb7d2;
+      --shadow: 0 28px 90px rgba(0, 0, 0, .42);
+      --radius: 30px;
+      --radius-sm: 20px;
+      --mx: 50vw;
+      --my: 24vh;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at var(--mx) var(--my), rgba(255, 167, 111, .18), transparent 31vw),
+        radial-gradient(circle at 12% 6%, rgba(147, 202, 255, .18), transparent 34vw),
+        radial-gradient(circle at 85% 18%, rgba(255, 183, 210, .12), transparent 30vw),
+        linear-gradient(135deg, #090b10 0%, #111724 52%, #18110c 100%);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(circle at center, black, transparent 78%);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background: linear-gradient(120deg, transparent 0 34%, rgba(255,255,255,.045) 38%, transparent 43% 100%);
+      animation: scan 12s linear infinite;
+      mix-blend-mode: screen;
+    }
+
+    @keyframes scan {
+      from { transform: translateX(-46%) translateY(-34%); }
+      to { transform: translateX(46%) translateY(34%); }
+    }
+
+    #bgCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -4;
+      pointer-events: none;
+      opacity: .62;
+    }
+
+    .cursor {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 420px;
+      height: 420px;
+      border-radius: 999px;
+      transform: translate3d(calc(var(--mx) - 210px), calc(var(--my) - 210px), 0);
+      background: radial-gradient(circle, rgba(255, 205, 158, .15), transparent 63%);
+      pointer-events: none;
+      z-index: 20;
+      mix-blend-mode: screen;
+      filter: blur(5px);
+    }
+
+    .gate {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      background:
+        radial-gradient(circle at 50% 12%, rgba(255, 211, 171, .19), transparent 35vw),
+        linear-gradient(135deg, rgba(7,8,12,.94), rgba(17,20,29,.95));
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .gate.hidden {
+      display: none;
+    }
+
+    .gate-card {
+      width: min(430px, 100%);
+      padding: 28px;
+      border-radius: 30px;
+      border: 1px solid var(--line-strong);
+      background: linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,255,255,.06));
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .gate-mark {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 16px;
+      border-radius: 21px;
+      background:
+        radial-gradient(circle at 32% 24%, #fff3e2, transparent 34%),
+        linear-gradient(135deg, #ffd6a8, #ff996f);
+      box-shadow: 0 18px 48px rgba(255,153,111,.22);
+    }
+
+    .gate-card h1 {
+      font-size: 26px;
+      letter-spacing: -.04em;
+      margin-bottom: 10px;
+    }
+
+    .gate-card p {
+      color: var(--soft);
+      font-size: 13px;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .gate-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .gate input {
+      min-width: 0;
+      flex: 1;
+      padding: 13px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      outline: none;
+      color: var(--text);
+      background: rgba(255,255,255,.08);
+      font-size: 15px;
+      text-align: center;
+    }
+
+    .gate button,
+    .btn {
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 999px;
+      color: #20140e;
+      background: linear-gradient(135deg, #ffd6a8, #ff996f);
+      padding: 12px 16px;
+      cursor: pointer;
+      font-size: 13px;
+      box-shadow: 0 16px 44px rgba(255,153,111,.18);
+      transition: transform .2s ease, filter .2s ease, border-color .2s ease;
+      white-space: nowrap;
+    }
+
+    .gate button:hover,
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    .gate-tip {
+      min-height: 20px;
+      margin-top: 12px;
+      color: var(--pink);
+      font-size: 12px;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 18px 0 56px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 14px;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 10px 10px 15px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 222, 188, .18);
+      background: rgba(10, 12, 18, .58);
+      box-shadow: 0 18px 50px rgba(0,0,0,.3);
+      backdrop-filter: blur(22px) saturate(150%);
+      -webkit-backdrop-filter: blur(22px) saturate(150%);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 14px;
+      background:
+        radial-gradient(circle at 32% 24%, #fff2df, transparent 32%),
+        linear-gradient(135deg, #ffd6a8, #ff996f);
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 14px;
+      letter-spacing: -.02em;
+    }
+
+    .brand span {
+      display: block;
+      margin-top: 2px;
+      font-size: 10px;
+      color: var(--faint);
+      letter-spacing: .06em;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav a,
+    .nav button {
+      flex: 0 0 auto;
+      text-decoration: none;
+      color: rgba(255, 238, 218, .72);
+      border: 1px solid transparent;
+      background: rgba(255,255,255,.045);
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: color .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .nav a:hover,
+    .nav button:hover {
+      color: var(--text);
+      border-color: rgba(255, 222, 188, .24);
+      background: rgba(255,255,255,.09);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items: stretch;
+      padding: 22px 0 0;
+    }
+
+    .panel,
+    .card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 222, 188, .18);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.115), rgba(255,255,255,.045)),
+        radial-gradient(circle at 20% 0%, rgba(255, 214, 168, .12), transparent 44%);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(22px) saturate(145%);
+      -webkit-backdrop-filter: blur(22px) saturate(145%);
+    }
+
+    .panel::before,
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at var(--local-x, 50%) var(--local-y, 0%), rgba(255,255,255,.18), transparent 28rem);
+      opacity: .5;
+      transition: opacity .25s ease;
+    }
+
+    .panel-inner,
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-main {
+      min-height: 520px;
+      padding: clamp(26px, 5vw, 58px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 222, 188, .22);
+      background: rgba(255,255,255,.07);
+      color: rgba(255, 238, 218, .74);
+      font-size: 12px;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--mint);
+      box-shadow: 0 0 0 rgba(157,255,197,.5);
+      animation: pulse 2.2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(157,255,197,.5); }
+      80% { box-shadow: 0 0 0 14px rgba(157,255,197,0); }
+      100% { box-shadow: 0 0 0 0 rgba(157,255,197,0); }
+    }
+
+    .hero h1 {
+      margin-top: 24px;
+      font-size: clamp(48px, 8.6vw, 100px);
+      line-height: .92;
+      letter-spacing: -.075em;
+      font-weight: 780;
+      background: linear-gradient(135deg, #fff7ec, #ffd6a8 52%, #ff996f);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy {
+      margin-top: 24px;
+      max-width: 690px;
+      color: var(--soft);
+      font-size: clamp(14px, 1.7vw, 17px);
+      line-height: 1.9;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .btn.secondary {
+      color: var(--text);
+      background:
+        radial-gradient(circle at var(--btn-x, 50%) var(--btn-y, 0%), rgba(255,255,255,.18), transparent 48%),
+        rgba(255,255,255,.075);
+      box-shadow: 0 16px 40px rgba(0,0,0,.2);
+    }
+
+    .side-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .stat-card {
+      padding: 22px;
+      min-height: 160px;
+    }
+
+    .stat-label {
+      color: var(--faint);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .stat-number {
+      margin-top: 10px;
+      font-size: 42px;
+      line-height: 1;
+      letter-spacing: -.06em;
+      color: var(--accent);
+      font-weight: 760;
+    }
+
+    .stat-text {
+      margin-top: 10px;
+      color: var(--soft);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .mini {
+      border-radius: 18px;
+      padding: 12px;
+      border: 1px solid rgba(255,255,255,.09);
+      background: rgba(255,255,255,.055);
+    }
+
+    .mini strong {
+      display: block;
+      color: var(--accent);
+      font-size: 18px;
+    }
+
+    .mini span {
+      display: block;
+      margin-top: 4px;
+      color: var(--faint);
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    section {
+      margin-top: 18px;
+      opacity: 0;
+      transform: translateY(24px) scale(.988);
+      transition: opacity .72s ease, transform .72s cubic-bezier(.2,.8,.2,1);
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .section-panel {
+      padding: clamp(18px, 3vw, 30px);
+    }
+
+    .section-head {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(25px, 4vw, 42px);
+      line-height: 1;
+      letter-spacing: -.055em;
+    }
+
+    .section-desc {
+      margin-top: 10px;
+      max-width: 660px;
+      color: var(--soft);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .section-chip {
+      flex: 0 0 auto;
+      padding: 8px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.055);
+      color: var(--faint);
+      font-size: 12px;
+    }
+
+    .grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 12px;
+    }
+
+    .grid.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .goal-card {
+      padding: 20px;
+      min-height: 250px;
+      transform-style: preserve-3d;
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+
+    .goal-card:hover {
+      border-color: rgba(255,222,188,.35);
+      box-shadow: 0 32px 100px rgba(0,0,0,.42);
+    }
+
+    .goal-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .goal-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: #1f140e;
+      font-weight: 760;
+      background: linear-gradient(135deg, #ffd6a8, #ff996f);
+      box-shadow: 0 16px 44px rgba(255,153,111,.18);
+    }
+
+    .goal-tag {
+      color: var(--faint);
+      font-size: 11px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.055);
+      padding: 6px 9px;
+      border-radius: 999px;
+    }
+
+    .goal-card h3 {
+      margin-top: 22px;
+      font-size: 21px;
+      line-height: 1.18;
+      letter-spacing: -.04em;
+    }
+
+    .goal-card p {
+      margin-top: 10px;
+      color: var(--soft);
+      font-size: 13px;
+      line-height: 1.78;
+    }
+
+    .progress {
+      margin-top: 18px;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--faint);
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .bar {
+      height: 10px;
+      overflow: hidden;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.06);
+    }
+
+    .bar span {
+      display: block;
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 30px rgba(255,153,111,.32);
+      transition: width .45s ease;
+    }
+
+    .checklist {
+      margin-top: 16px;
+      display: grid;
+      gap: 8px;
+    }
+
+    label.check {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      color: rgba(255, 238, 218, .72);
+      font-size: 13px;
+      line-height: 1.45;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .check input {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      margin-top: 1px;
+      flex: 0 0 auto;
+      border-radius: 6px;
+      border: 1px solid rgba(255,222,188,.35);
+      background: rgba(255,255,255,.06);
+      transition: background .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .check input:checked {
+      border-color: transparent;
+      background: linear-gradient(135deg, #ffd6a8, #ff996f);
+      box-shadow: 0 0 22px rgba(255,153,111,.22);
+    }
+
+    .check input:checked::after {
+      content: "✓";
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      color: #20140e;
+      font-size: 12px;
+      font-weight: 760;
+    }
+
+    .check input:checked + span {
+      color: var(--faint);
+      text-decoration: line-through;
+      text-decoration-thickness: 1px;
+    }
+
+    .timeline {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 10px;
+    }
+
+    .month {
+      display: grid;
+      grid-template-columns: 92px 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 16px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.052);
+    }
+
+    .month strong {
+      color: var(--accent);
+      font-size: 13px;
+      letter-spacing: .08em;
+    }
+
+    .month span {
+      color: var(--soft);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .month em {
+      font-style: normal;
+      color: var(--faint);
+      font-size: 12px;
+    }
+
+    .note-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .note {
+      min-height: 180px;
+      padding: 18px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.055);
+    }
+
+    .note h3 {
+      font-size: 17px;
+      letter-spacing: -.03em;
+      margin-bottom: 12px;
+    }
+
+    .editable {
+      min-height: 96px;
+      outline: none;
+      color: var(--soft);
+      line-height: 1.8;
+      font-size: 13px;
+      white-space: pre-wrap;
+    }
+
+    .editable:focus {
+      color: var(--text);
+    }
+
+    .editable[contenteditable="true"]:empty::before {
+      content: attr(data-placeholder);
+      color: var(--faint);
+    }
+
+    .table {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.045);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .row:last-child { border-bottom: 0; }
+
+    .cell {
+      padding: 14px;
+      color: var(--soft);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .row.head .cell {
+      color: var(--text);
+      background: rgba(255,255,255,.07);
+      font-weight: 650;
+    }
+
+    .footer {
+      margin: 24px auto 0;
+      max-width: 760px;
+      color: var(--faint);
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.85;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      z-index: 80;
+      transform: translateX(-50%) translateY(30px);
+      opacity: 0;
+      pointer-events: none;
+      padding: 11px 14px;
+      border-radius: 999px;
+      color: var(--text);
+      background: rgba(10,12,18,.74);
+      border: 1px solid rgba(255,222,188,.22);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 16px 42px rgba(0,0,0,.32);
+      transition: opacity .2s ease, transform .2s ease;
+      font-size: 12px;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .grid.cols-4,
+      .grid.cols-3,
+      .grid.cols-2,
+      .note-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .side-stack {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .page {
+        width: min(100% - 20px, 1180px);
+        padding-top: 10px;
+      }
+
+      .topbar {
+        top: 10px;
+        border-radius: 24px;
+        align-items: stretch;
+      }
+
+      .brand span {
+        display: none;
+      }
+
+      .nav {
+        max-width: 52vw;
+      }
+
+      .hero-main {
+        min-height: auto;
+        padding: 28px 20px;
+        border-radius: 28px;
+      }
+
+      .hero h1 {
+        font-size: clamp(46px, 17vw, 74px);
+      }
+
+      .hero-copy {
+        font-size: 14px;
+      }
+
+      .side-stack {
+        grid-template-columns: 1fr;
+      }
+
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .month {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      .row {
+        grid-template-columns: 1fr;
+      }
+
+      .cursor {
+        display: none;
+      }
+
+      .gate-row {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+
+      section {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+  <div class="cursor" aria-hidden="true"></div>
+
+  <div class="gate" id="gate">
+    <div class="gate-card">
+      <div class="gate-mark"></div>
+      <h1>Mingze Plan</h1>
+      <div class="gate-row">
+        <input id="passwordInput" type="password" inputmode="numeric" placeholder="输入访问密码" autocomplete="current-password" />
+        <button id="unlockBtn">进入</button>
+      </div>
+      <div class="gate-tip" id="gateTip"></div>
+    </div>
+  </div>
+
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-logo"></div>
+        <div>
+          <strong>Mingze Plan</strong>
+          <span>NAME · PHONE · JAVA · LIFE</span>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="页面导航">
+        <a href="#focus">主线</a>
+        <a href="#roadmap">路线</a>
+        <a href="#habits">节奏</a>
+        <a href="#review">复盘</a>
+        <button id="copySummary" type="button">复制进度</button>
+        <button id="resetAll" type="button">重置</button>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <section class="panel hero-main visible" id="home">
+        <div class="panel-inner">
+          <div class="eyebrow"><span class="pulse"></span> 把大事拆小，慢慢推进</div>
+          <h1>2026<br>年度计划</h1>
+          <p class="hero-copy">
+            改名、买手机、学 Java、做网站、整理账号、推进驾照。<br>
+            这些事不用挤在一天完成，放进这一年，一格一格往前推。
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#focus">查看年度清单</a>
+            <a class="btn secondary" href="#review">写本周复盘</a>
+            <a class="btn secondary" href="#roadmap">查看月份路线</a>
+          </div>
+        </div>
+      </section>
+
+      <aside class="side-stack">
+        <section class="card stat-card visible">
+          <div class="card-inner">
+            <div class="stat-label">Year Progress</div>
+            <div class="stat-number" id="yearProgress">--%</div>
+            <p class="stat-text" id="yearText">正在计算今年进度。</p>
+            <div class="progress">
+              <div class="progress-meta"><span>2026</span><span id="daysLeft">-- 天剩余</span></div>
+              <div class="bar"><span id="yearBar"></span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card stat-card visible">
+          <div class="card-inner">
+            <div class="stat-label">Plan Completion</div>
+            <div class="stat-number" id="totalProgress">0%</div>
+            <p class="stat-text">下面所有事项勾选后会自动统计，并保存在当前浏览器里。</p>
+            <div class="mini-grid">
+              <div class="mini"><strong id="doneCount">0</strong><span>已完成</span></div>
+              <div class="mini"><strong id="todoCount">0</strong><span>待完成</span></div>
+              <div class="mini"><strong id="todayDate">Today</strong><span>今日</span></div>
+            </div>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <section class="panel section-panel" id="focus">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">6 条年度主线</h2>
+          <p class="section-desc">这版把你的真实计划补回来了：改名、买手机、Java、网站、内容账号、驾照身体财务。</p>
+        </div>
+        <div class="section-chip">Core Focus</div>
+      </div>
+
+      <div class="grid cols-3">
+        <article class="card goal-card" data-section="identity">
+          <div class="card-inner">
+            <div class="goal-top">
+              <div class="goal-icon">名</div>
+              <div class="goal-tag">Identity</div>
+            </div>
+            <h3>改名与身份同步</h3>
+            <p>把“廖铭泽”这条线推进到底，材料、证件、账号和公开身份一步步同步。</p>
+            <div class="progress">
+              <div class="progress-meta"><span>进度</span><span class="card-percent">0%</span></div>
+              <div class="bar"><span class="card-bar"></span></div>
+            </div>
+            <div class="checklist">
+              <label class="check"><input type="checkbox" data-key="identity-materials"><span>改名材料清单整理完成</span></label>
+              <label class="check"><input type="checkbox" data-key="identity-submit"><span>改名申请流程推进</span></label>
+              <label class="check"><input type="checkbox" data-key="identity-docs"><span>身份证 / 户口 / 驾照等证件后续同步</span></label>
+              <label class="check"><input type="checkbox" data-key="identity-accounts"><span>邮箱、GitHub、内容账号名称逐步统一</span></label>
+            </div>
+          </div>
+        </article>
+
+        <article class="card goal-card" data-section="phone">
+          <div class="card-inner">
+            <div class="goal-top">
+              <div class="goal-icon">机</div>
+              <div class="goal-tag">Device</div>
+            </div>
+            <h3>买手机与设备迁移</h3>
+            <p>不是冲动换机。先看预算、型号、价格，再做数据迁移和账号安全检查。</p>
+            <div class="progress">
+              <div class="progress-meta"><span>进度</span><span class="card-percent">0%</span></div>
+              <div class="bar"><span class="card-bar"></span></div>
+            </div>
+            <div class="checklist">
+              <label class="check"><input type="checkbox" data-key="phone-budget"><span>确定买手机预算和时间点</span></label>
+              <label class="check"><input type="checkbox" data-key="phone-compare"><span>对比 iPhone 17 / 17 Pro / 18 系列</span></label>
+              <label class="check"><input type="checkbox" data-key="phone-buy"><span>完成购买或暂缓决定</span></label>
+              <label class="check"><input type="checkbox" data-key="phone-migrate"><span>旧手机数据、App、验证器和账号迁移完成</span></label>
+            </div>
+          </div>
+        </article>
+
+        <article class="card goal-card" data-section="java">
+          <div class="card-inner">
+            <div class="goal-top">
+              <div class="goal-icon">J</div>
+              <div class="goal-tag">Learning</div>
+            </div>
+            <h3>Java 自学主线</h3>
+            <p>从基础到项目，记录代码、问题、复盘和 GitHub 提交过程。</p>
+            <div class="progress">
+              <div class="progress-meta"><span>进度</span><span class="card-percent">0%</span></div>
+              <div class="bar"><span class="card-bar"></span></div>
+            </div>
+            <div class="checklist">
+              <label class="check"><input type="checkbox" data-key="java-basic"><span>Java 基础语法复盘</span></label>
+              <label class="check"><input type="checkbox" data-key="java-oop"><span>面向对象整理成文档</span></label>
+              <label class="check"><input type="checkbox" data-key="java-git"><span>学习仓库持续同步 GitHub</span></label>
+              <label class="check"><input type="checkbox" data-key="java-project"><span>完成 1 个可展示小项目</span></label>
+            </div>
+          </div>
+        </article>
+
+        <article class="card goal-card" data-section="build">
+          <div class="card-inner">
+            <div class="goal-top">
+              <div class="goal-icon">站</div>
+              <div class="goal-tag">Websites</div>
+            </div>
+            <h3>域名与网页系统</h3>
+            <p>把公开主页、技术入口、私人档案和年度计划页整理成清楚的系统。</p>
+            <div class="progress">
+              <div class="progress-meta"><span>进度</span><span class="card-percent">0%</span></div>
+              <div class="bar"><span class="card-bar"></span></div>
+            </div>
+            <div class="checklist">
+              <label class="check"><input type="checkbox" data-key="build-itsmingze"><span>itsmingze.com 公开主页上线</span></label>
+              <label class="check"><input type="checkbox" data-key="build-plan"><span>年度计划页部署到 GitHub</span></label>
+              <label class="check"><input type="checkbox" data-key="build-itspomme"><span>itspomme.cn 私人入口整理</span></label>
+              <label class="check"><input type="checkbox" data-key="build-xiazhouqi7"><span>xiazhouqi7.com 技术入口维护</span></label>
+              <label class="check"><input type="checkbox" data-key="build-impomme"><span>impomme.com 旧域名退役 / 跳转处理</span></label>
+            </div>
+          </div>
+        </article>
+
+        <article class="card goal-card" data-section="content">
+          <div class="card-inner">
+            <div class="goal-top">
+              <div class="goal-icon">写</div>
+              <div class="goal-tag">Creating</div>
+            </div>
+            <h3>内容账号矩阵</h3>
+            <p>把学习、教程、旅行和生活记录分开放，保持清楚，不互相打架。</p>
+            <div class="progress">
+              <div class="progress-meta"><span>进度</span><span class="card-percent">0%</span></div>
+              <div class="bar"><span class="card-bar"></span></div>
+            </div>
+            <div class="checklist">
+              <label class="check"><input type="checkbox" data-key="content-java"><span>Java 自学日记持续更新</span></label>
+              <label class="check"><input type="checkbox" data-key="content-tech"><span>下周七技术教程稳定产出</span></label>
+              <label class="check"><input type="checkbox" data-key="content-travel"><span>小岛周末旅行内容整理</span></label>
+              <label class="check"><input type="checkbox" data-key="content-life"><span>安徒生喝汽水保留生活记录</span></label>
+            </div>
+          </div>
+        </article>
+
+        <article class="card goal-card" data-section="life">
+          <div class="card-inner">
+            <div class="goal-top">
+              <div class="goal-icon">秩</div>
+              <div class="goal-tag">Life</div>
+            </div>
+            <h3>驾照、身体与财务</h3>
+            <p>驾照、体重、芝麻分、固定支出和订阅检查，都放进可追踪的节奏里。</p>
+            <div class="progress">
+              <div class="progress-meta"><span>进度</span><span class="card-percent">0%</span></div>
+              <div class="bar"><span class="card-bar"></span></div>
+            </div>
+            <div class="checklist">
+              <label class="check"><input type="checkbox" data-key="life-license"><span>驾照刷题 / 练车按阶段推进</span></label>
+              <label class="check"><input type="checkbox" data-key="life-body"><span>体重从 140 斤往 116–120 斤靠近</span></label>
+              <label class="check"><input type="checkbox" data-key="life-credit"><span>芝麻分从 557 往 650 目标推进</span></label>
+              <label class="check"><input type="checkbox" data-key="life-money"><span>固定支出、订阅和银行卡用途每月复盘</span></label>
+              <label class="check"><input type="checkbox" data-key="life-trip"><span>安排 1 次认真记录的旅行</span></label>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel section-panel" id="roadmap">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">下半年路线</h2>
+          <p class="section-desc">从 7 月开始，每个月只抓几个真正重要的节点。大事推进，小事收口。</p>
+        </div>
+        <div class="section-chip">Jul → Dec</div>
+      </div>
+
+      <div class="timeline">
+        <div class="month"><strong>07 月</strong><span>itsmingze.com 公开主页、年度计划页、GitHub Pages 和域名解析先跑通；同时整理改名材料清单。</span><em>搭入口</em></div>
+        <div class="month"><strong>08 月</strong><span>Java 基础和面向对象复盘；改名流程继续推进；驾照刷题恢复节奏。</span><em>打基础</em></div>
+        <div class="month"><strong>09 月</strong><span>开始第 1 个可展示小项目；手机预算和型号对比完成，决定买或暂缓。</span><em>做选择</em></div>
+        <div class="month"><strong>10 月</strong><span>补前端三件套和部署流程；如果买手机，完成旧机迁移、账号登录和验证器检查。</span><em>补能力</em></div>
+        <div class="month"><strong>11 月</strong><span>整理公开作品集、账号入口和教程页；小岛周末和安徒生喝汽水保留清晰定位。</span><em>收作品</em></div>
+        <div class="month"><strong>12 月</strong><span>年度复盘：改名、手机、Java、域名、账号、驾照、体重、芝麻分，哪些完成，哪些进入 2027。</span><em>做复盘</em></div>
+      </div>
+    </section>
+
+    <section class="panel section-panel" id="habits">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">每周固定节奏</h2>
+          <p class="section-desc">这是低压版本。不是每天都满分，只要每周能往前推一点。</p>
+        </div>
+        <div class="section-chip">Weekly Rhythm</div>
+      </div>
+
+      <div class="table">
+        <div class="row head">
+          <div class="cell">模块</div>
+          <div class="cell">最低完成线</div>
+          <div class="cell">理想完成线</div>
+        </div>
+        <div class="row">
+          <div class="cell">改名 / 证件</div>
+          <div class="cell">每周推进 1 个小动作</div>
+          <div class="cell">材料、流程、证件同步有记录</div>
+        </div>
+        <div class="row">
+          <div class="cell">买手机 / 设备</div>
+          <div class="cell">先看预算和价格，不冲动下单</div>
+          <div class="cell">买前有清单，买后完成数据迁移</div>
+        </div>
+        <div class="row">
+          <div class="cell">Java / 编程</div>
+          <div class="cell">每周 3 次，每次 40 分钟</div>
+          <div class="cell">完成 1 篇学习日记 + 1 次 GitHub 提交</div>
+        </div>
+        <div class="row">
+          <div class="cell">网站 / 域名</div>
+          <div class="cell">每周修 1 个页面或入口</div>
+          <div class="cell">主站、计划页、档案馆、技术入口稳定可访问</div>
+        </div>
+        <div class="row">
+          <div class="cell">内容输出</div>
+          <div class="cell">每周整理 1 个选题</div>
+          <div class="cell">发布 1 条教程、学习记录或旅行内容</div>
+        </div>
+        <div class="row">
+          <div class="cell">身体 / 财务 / 驾照</div>
+          <div class="cell">每周记录体重、支出或刷题情况</div>
+          <div class="cell">体重、芝麻分、订阅、驾照都有阶段复盘</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel section-panel" id="review">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">复盘区</h2>
+          <p class="section-desc">这里的文字会保存在当前浏览器。适合写本周复盘、下周计划、突然想到的事。</p>
+        </div>
+        <div class="section-chip">Local Notes</div>
+      </div>
+
+      <div class="note-grid">
+        <div class="note">
+          <h3>本周复盘</h3>
+          <div class="editable" id="note-week" contenteditable="true" data-placeholder="这周改名、手机、Java、网站、内容、驾照、身体财务，分别推进了什么。"></div>
+        </div>
+
+        <div class="note">
+          <h3>下周计划</h3>
+          <div class="editable" id="note-next" contenteditable="true" data-placeholder="下周只写 3 件最重要的事：一个必须推进，一个顺手完成，一个可以暂缓。"></div>
+        </div>
+
+        <div class="note">
+          <h3>今年想留下的东西</h3>
+          <div class="editable" id="note-keep" contenteditable="true" data-placeholder="比如：一个新名字、一部合适的手机、一个作品、一个仓库、一套笔记、一个长期入口。"></div>
+        </div>
+
+        <div class="note">
+          <h3>今年不再消耗我的事</h3>
+          <div class="editable" id="note-stop" contenteditable="true" data-placeholder="比如：反复纠结、冲动消费、重复开新坑、为了看起来努力而努力。"></div>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer">
+      Mingze Plan · 2026<br>
+      大事慢慢推，小事慢慢清。
+    </p>
+  </main>
+
+  <div class="toast" id="toast">已保存</div>
+
+  <script>
+    (() => {
+      const PLAN_PASSWORD = "7";
+      const storagePrefix = "mingze-plan-2026:";
+      const root = document.documentElement;
+      const gate = document.getElementById("gate");
+      const input = document.getElementById("passwordInput");
+      const unlockBtn = document.getElementById("unlockBtn");
+      const gateTip = document.getElementById("gateTip");
+      const toast = document.getElementById("toast");
+
+      let mx = innerWidth * .5;
+      let my = innerHeight * .24;
+      let tx = mx;
+      let ty = my;
+
+      function showToast(text) {
+        toast.textContent = text;
+        toast.classList.add("show");
+        clearTimeout(showToast.timer);
+        showToast.timer = setTimeout(() => toast.classList.remove("show"), 1700);
+      }
+
+      function unlock() {
+        if ((input.value || "").trim() === PLAN_PASSWORD) {
+          sessionStorage.setItem(storagePrefix + "unlocked", "1");
+          gate.classList.add("hidden");
+          showToast("欢迎回来");
+        } else {
+          gateTip.textContent = "密码不对，再试一下。";
+          input.select();
+        }
+      }
+
+      if (sessionStorage.getItem(storagePrefix + "unlocked") === "1") {
+        gate.classList.add("hidden");
+      }
+
+      unlockBtn.addEventListener("click", unlock);
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") unlock();
+      });
+
+      function save(key, value) {
+        localStorage.setItem(storagePrefix + key, value);
+      }
+
+      function load(key, fallback = "") {
+        return localStorage.getItem(storagePrefix + key) ?? fallback;
+      }
+
+      function calculateYear() {
+        const now = new Date();
+        const start = new Date("2026-01-01T00:00:00");
+        const end = new Date("2027-01-01T00:00:00");
+        const total = end - start;
+        const passed = Math.min(Math.max(now - start, 0), total);
+        const percent = Math.round((passed / total) * 100);
+        const left = Math.max(0, Math.ceil((end - now) / 86400000));
+
+        document.getElementById("yearProgress").textContent = percent + "%";
+        document.getElementById("yearBar").style.width = percent + "%";
+        document.getElementById("daysLeft").textContent = left + " 天剩余";
+        document.getElementById("yearText").textContent = left > 0
+          ? "今年已经走过 " + percent + "%，还剩 " + left + " 天。"
+          : "2026 已结束，可以开始做年度复盘了。";
+
+        const date = new Intl.DateTimeFormat("zh-CN", { month: "2-digit", day: "2-digit" }).format(now);
+        document.getElementById("todayDate").textContent = date;
+      }
+
+      function updateProgress() {
+        const checks = [...document.querySelectorAll("input[type='checkbox'][data-key]")];
+        const done = checks.filter(item => item.checked).length;
+        const total = checks.length;
+        const percent = total ? Math.round(done / total * 100) : 0;
+
+        document.getElementById("totalProgress").textContent = percent + "%";
+        document.getElementById("doneCount").textContent = done;
+        document.getElementById("todoCount").textContent = total - done;
+
+        document.querySelectorAll(".goal-card").forEach(card => {
+          const items = [...card.querySelectorAll("input[type='checkbox']")];
+          const cardDone = items.filter(item => item.checked).length;
+          const cardPercent = items.length ? Math.round(cardDone / items.length * 100) : 0;
+          card.querySelector(".card-percent").textContent = cardPercent + "%";
+          card.querySelector(".card-bar").style.width = cardPercent + "%";
+        });
+      }
+
+      document.querySelectorAll("input[type='checkbox'][data-key]").forEach(box => {
+        box.checked = load("check:" + box.dataset.key, "0") === "1";
+        box.addEventListener("change", () => {
+          save("check:" + box.dataset.key, box.checked ? "1" : "0");
+          updateProgress();
+          showToast(box.checked ? "已完成一小格" : "已取消勾选");
+        });
+      });
+
+      document.querySelectorAll(".editable").forEach(el => {
+        el.textContent = load("note:" + el.id, "");
+        el.addEventListener("input", () => {
+          save("note:" + el.id, el.textContent);
+          showToast("文字已保存");
+        });
+      });
+
+      document.getElementById("resetAll").addEventListener("click", () => {
+        if (!confirm("确定重置所有勾选和复盘文字吗？")) return;
+        Object.keys(localStorage).forEach(key => {
+          if (key.startsWith(storagePrefix)) localStorage.removeItem(key);
+        });
+        document.querySelectorAll("input[type='checkbox']").forEach(item => item.checked = false);
+        document.querySelectorAll(".editable").forEach(item => item.textContent = "");
+        updateProgress();
+        showToast("已重置");
+      });
+
+      document.getElementById("copySummary").addEventListener("click", async () => {
+        const checks = [...document.querySelectorAll("input[type='checkbox'][data-key]")];
+        const done = checks.filter(item => item.checked).length;
+        const total = checks.length;
+        const percent = total ? Math.round(done / total * 100) : 0;
+        const week = document.getElementById("note-week").textContent.trim() || "暂无本周复盘";
+        const next = document.getElementById("note-next").textContent.trim() || "暂无下周计划";
+        const text = `Mingze Plan 进度：${done}/${total}（${percent}%）\n\n本周复盘：\n${week}\n\n下周计划：\n${next}`;
+        try {
+          await navigator.clipboard.writeText(text);
+          showToast("进度已复制");
+        } catch (e) {
+          showToast("复制失败，可手动选择文字");
+        }
+      });
+
+      function trackPointer(event) {
+        tx = event.clientX;
+        ty = event.clientY;
+
+        const panel = event.target.closest?.(".panel, .card");
+        if (panel) {
+          const rect = panel.getBoundingClientRect();
+          panel.style.setProperty("--local-x", ((event.clientX - rect.left) / rect.width) * 100 + "%");
+          panel.style.setProperty("--local-y", ((event.clientY - rect.top) / rect.height) * 100 + "%");
+        }
+
+        const card = event.target.closest?.(".goal-card");
+        if (card) {
+          const rect = card.getBoundingClientRect();
+          const x = ((event.clientX - rect.left) / rect.width) - .5;
+          const y = ((event.clientY - rect.top) / rect.height) - .5;
+          card.style.transform = `perspective(900px) rotateX(${y * -5}deg) rotateY(${x * 6}deg) translateY(-4px)`;
+        }
+
+        const btn = event.target.closest?.(".btn");
+        if (btn) {
+          const rect = btn.getBoundingClientRect();
+          btn.style.setProperty("--btn-x", ((event.clientX - rect.left) / rect.width) * 100 + "%");
+          btn.style.setProperty("--btn-y", ((event.clientY - rect.top) / rect.height) * 100 + "%");
+        }
+      }
+
+      window.addEventListener("pointermove", trackPointer, { passive: true });
+
+      document.querySelectorAll(".goal-card").forEach(card => {
+        card.addEventListener("pointerleave", () => {
+          card.style.transform = "";
+        });
+      });
+
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      }, { threshold: .08 });
+
+      document.querySelectorAll("section").forEach(section => io.observe(section));
+
+      const canvas = document.getElementById("bgCanvas");
+      const ctx = canvas.getContext("2d");
+      let w = 0, h = 0, dpr = 1, particles = [];
+
+      function resizeCanvas() {
+        dpr = Math.min(devicePixelRatio || 1, 2);
+        w = innerWidth;
+        h = innerHeight;
+        canvas.width = Math.floor(w * dpr);
+        canvas.height = Math.floor(h * dpr);
+        canvas.style.width = w + "px";
+        canvas.style.height = h + "px";
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const count = Math.min(110, Math.max(42, Math.floor(w * h / 21000)));
+        particles = Array.from({ length: count }, (_, i) => ({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - .5) * .24,
+          vy: (Math.random() - .5) * .24,
+          r: Math.random() * 1.7 + .45,
+          warm: i % 3 !== 0
+        }));
+      }
+
+      function draw() {
+        mx += (tx - mx) * .09;
+        my += (ty - my) * .09;
+        root.style.setProperty("--mx", mx + "px");
+        root.style.setProperty("--my", my + "px");
+
+        ctx.clearRect(0, 0, w, h);
+
+        for (const p of particles) {
+          const dx = p.x - mx;
+          const dy = p.y - my;
+          const dist = Math.max(1, Math.hypot(dx, dy));
+          const push = Math.max(0, 1 - dist / 250) * .32;
+          p.x += p.vx + dx / dist * push;
+          p.y += p.vy + dy / dist * push;
+
+          if (p.x < -20) p.x = w + 20;
+          if (p.x > w + 20) p.x = -20;
+          if (p.y < -20) p.y = h + 20;
+          if (p.y > h + 20) p.y = -20;
+        }
+
+        for (let i = 0; i < particles.length; i++) {
+          const a = particles[i];
+          for (let j = i + 1; j < particles.length; j++) {
+            const b = particles[j];
+            const dist = Math.hypot(a.x - b.x, a.y - b.y);
+            if (dist < 112) {
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.strokeStyle = `rgba(255, 214, 168, ${0.1 * (1 - dist / 112)})`;
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+          }
+        }
+
+        for (const p of particles) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.warm ? "rgba(255, 209, 156, .52)" : "rgba(147, 202, 255, .43)";
+          ctx.fill();
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      window.addEventListener("resize", resizeCanvas, { passive: true });
+      resizeCanvas();
+      draw();
+      calculateYear();
+      updateProgress();
+    })();
+  </script>
+</body>
+</html>
